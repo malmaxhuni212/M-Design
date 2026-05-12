@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>M-Design | Premium Interior Design – Kosovo, Albania & Worldwide</title>
+  <meta name="description" content="M-Design is a premium interior design studio based in Albania, serving clients in Kosovo, Albania, and worldwide. Expert interior design for Airbnb owners, homeowners, furniture stores, and commercial clients — enhanced with AI rendering and 3D walkthroughs." />
+  <meta name="keywords" content="interior design Albania, interior design Kosovo, Airbnb interior design, residential interior design, commercial interior design, M-Design, luxury interiors, 3D design, furniture store design" />
+  <meta property="og:title" content="M-Design | Premium Interior Design – Albania & Kosovo" />
+  <meta property="og:description" content="Expert interior design for Airbnb, homes, and businesses in Albania, Kosovo, and worldwide. Enhanced with AI rendering and 3D walkthroughs." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --dark2: #1a1a1a;
+      --dark3: #222222;
+      --yellow: #f5c518;
+      --yellow-light: #ffd93d;
+      --yellow-dark: #e0b000;
+      --white: #ffffff;
+      --gray: #888888;
+      --gray-light: #cccccc;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--dark); }
+    ::-webkit-scrollbar-thumb { background: var(--yellow); border-radius: 3px; }
+
+    /* ── UTILITY ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 100px 0; }
+    .section-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 4px;
+      text-transform: uppercase; color: var(--yellow); margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700; line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .section-title span { color: var(--yellow); }
+    .section-desc { color: var(--gray-light); font-size: 1.05rem; line-height: 1.8; max-width: 600px; }
+
+    /* ── FADE-IN ── */
+    .fade-in { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── NAV ── */
+    #navbar {
+      position: fixed; top: 0; width: 100%; z-index: 1000;
+      padding: 20px 0;
+      transition: background 0.4s, padding 0.4s, box-shadow 0.4s;
+    }
+    #navbar.scrolled {
+      background: rgba(10,10,10,0.97);
+      padding: 14px 0;
+      box-shadow: 0 4px 30px rgba(245,197,24,0.08);
+      backdrop-filter: blur(10px);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.7rem; font-weight: 700;
+      color: var(--white); text-decoration: none;
+    }
+    .nav-logo span { color: var(--yellow); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      color: var(--gray-light); text-decoration: none;
+      font-size: 0.9rem; font-weight: 500; letter-spacing: 0.5px;
+      position: relative; transition: color 0.3s;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 2px; background: var(--yellow);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover { color: var(--yellow); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      background: var(--yellow); color: var(--black);
+      padding: 10px 24px; border-radius: 6px;
+      font-weight: 700; font-size: 0.88rem;
+      text-decoration: none; transition: background 0.3s, transform 0.2s;
+    }
+    .nav-cta:hover { background: var(--yellow-light); transform: translateY(-2px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { display: block; width: 26px; height: 2px; background: var(--white); border-radius: 2px; transition: 0.3s; }
+    .mobile-menu {
+      display: none; position: fixed; top: 0; left: 0;
+      width: 100%; height: 100vh; background: var(--dark);
+      z-index: 999; flex-direction: column; align-items: center;
+      justify-content: center; gap: 36px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--white); text-decoration: none;
+      font-size: 1.6rem; font-weight: 700; transition: color 0.3s;
+    }
+    .mobile-menu a:hover { color: var(--yellow); }
+    .close-menu { position: absolute; top: 24px; right: 24px; font-size: 2rem; cursor: pointer; color: var(--white); }
+
+    /* ── HERO ── */
+    #home {
+      min-height: 100vh; display: flex; align-items: center;
+      background: var(--black);
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(245,197,24,0.07) 0%, transparent 70%),
+                  radial-gradient(ellipse at 20% 80%, rgba(245,197,24,0.04) 0%, transparent 60%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; opacity: 0.04;
+      background-image: linear-gradient(var(--yellow) 1px, transparent 1px),
+                        linear-gradient(90deg, var(--yellow) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 520px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(245,197,24,0.1); border: 1px solid rgba(245,197,24,0.25);
+      padding: 8px 18px; border-radius: 50px;
+      font-size: 0.82rem; font-weight: 600; color: var(--yellow);
+      letter-spacing: 1px; text-transform: uppercase; margin-bottom: 28px;
+    }
+    .hero-badge .dot { width: 7px; height: 7px; background: var(--yellow); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
+    .hero-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 5.2rem);
+      font-weight: 900; line-height: 1.06;
+      letter-spacing: -1px; margin-bottom: 24px;
+    }
+    .hero-title .highlight {
+      color: var(--yellow);
+      background: linear-gradient(135deg, var(--yellow), var(--yellow-light));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      font-size: 1.15rem; color: var(--gray-light);
+      line-height: 1.8; margin-bottom: 40px; max-width: 580px;
+    }
+    .hero-sub strong { color: var(--white); }
+    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--yellow); color: var(--black);
+      padding: 16px 36px; border-radius: 8px;
+      font-weight: 800; font-size: 1rem; text-decoration: none;
+      transition: all 0.3s; box-shadow: 0 8px 32px rgba(245,197,24,0.25);
+    }
+    .btn-primary:hover { background: var(--yellow-light); transform: translateY(-3px); box-shadow: 0 14px 40px rgba(245,197,24,0.35); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--white);
+      padding: 16px 36px; border-radius: 8px;
+      font-weight: 600; font-size: 1rem; text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: all 0.3s;
+    }
+    .btn-secondary:hover { border-color: var(--yellow); color: var(--yellow); transform: translateY(-3px); }
+    .hero-bottom {
+      position: absolute; bottom: 40px; left: 50%;
+      transform: translateX(-50%); display: flex; flex-direction: column;
+      align-items: center; gap: 8px; color: var(--gray);
+      font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase;
+    }
+    .scroll-arrow { width: 20px; height: 20px; border-right: 2px solid var(--yellow); border-bottom: 2px solid var(--yellow); transform: rotate(45deg); animation: bounce 2s infinite; }
+    @keyframes bounce { 0%,100%{transform:rotate(45deg) translateY(0)} 50%{transform:rotate(45deg) translateY(6px)} }
+
+    /* ── STATS ── */
+    #stats { background: var(--dark); padding: 60px 0; }
+    .stats-inner {
+      display: flex; justify-content: space-around; align-items: center;
+      gap: 40px; flex-wrap: wrap;
+    }
+    .stat-item { text-align: center; }
+    .stat-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.8rem, 5vw, 4rem);
+      font-weight: 900; color: var(--yellow);
+      line-height: 1;
+    }
+    .stat-label { color: var(--gray-light); font-size: 0.95rem; margin-top: 8px; font-weight: 500; }
+    .stat-divider { width: 1px; height: 60px; background: rgba(255,255,255,0.1); }
+
+    /* ── SERVICES ── */
+    #services { background: var(--black); }
+    .services-header { margin-bottom: 64px; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .service-card {
+      background: var(--dark2);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px; padding: 36px 32px;
+      position: relative; overflow: hidden;
+      transition: all 0.4s; cursor: default;
+    }
+    .service-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: var(--yellow); transform: scaleX(0);
+      transition: transform 0.4s;
+    }
+    .service-card:hover { border-color: rgba(245,197,24,0.2); transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-icon {
+      width: 54px; height: 54px; background: rgba(245,197,24,0.1);
+      border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      margin-bottom: 24px; font-size: 1.5rem;
+      border: 1px solid rgba(245,197,24,0.2);
+      transition: background 0.3s;
+    }
+    .service-card:hover .service-icon { background: rgba(245,197,24,0.18); }
+    .service-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 12px; }
+    .service-card p { color: var(--gray-light); font-size: 0.92rem; line-height: 1.75; }
+    .service-tag {
+      display: inline-block; margin-top: 20px;
+      background: rgba(245,197,24,0.08); color: var(--yellow);
+      border: 1px solid rgba(245,197,24,0.2);
+      padding: 5px 14px; border-radius: 50px;
+      font-size: 0.78rem; font-weight: 600;
+    }
+
+    /* ── TECH/AI SECTION ── */
+    #tech {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+      position: relative; overflow: hidden;
+    }
+    .tech-glow {
+      position: absolute; top: -100px; right: -100px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(245,197,24,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .tech-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .tech-features { display: flex; flex-direction: column; gap: 28px; }
+    .tech-feature {
+      display: flex; gap: 20px; align-items: flex-start;
+      background: rgba(245,197,24,0.03); border: 1px solid rgba(245,197,24,0.08);
+      border-radius: 12px; padding: 24px;
+      transition: all 0.3s;
+    }
+    .tech-feature:hover { background: rgba(245,197,24,0.07); border-color: rgba(245,197,24,0.2); transform: translateX(6px); }
+    .tech-feature-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .tech-feature h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.05rem; margin-bottom: 8px; color: var(--white); }
+    .tech-feature p { color: var(--gray-light); font-size: 0.9rem; line-height: 1.7; }
+    .tech-visual {
+      background: var(--dark3);
+      border: 1px solid rgba(245,197,24,0.15);
+      border-radius: 20px; padding: 40px;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .tech-visual::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(245,197,24,0.05) 0%, transparent 60%);
+    }
+    .ai-quote {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem; font-weight: 800;
+      line-height: 1.4; color: var(--white);
+      margin-bottom: 24px; position: relative;
+    }
+    .ai-quote span { color: var(--yellow); }
+    .ai-tag {
+      display: inline-block;
+      background: var(--yellow); color: var(--black);
+      padding: 10px 24px; border-radius: 8px;
+      font-weight: 800; font-size: 0.9rem;
+      letter-spacing: 1px; text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .ai-chips { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+    .ai-chip {
+      background: rgba(245,197,24,0.1);
+      border: 1px solid rgba(245,197,24,0.2);
+      color: var(--yellow); padding: 7px 16px;
+      border-radius: 50px; font-size: 0.82rem; font-weight: 600;
+    }
+
+    /* ── PORTFOLIO ── */
+    #portfolio { background: var(--black); }
+    .portfolio-header { margin-bottom: 48px; }
+    .portfolio-filter { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+    .filter-btn {
+      background: var(--dark2); color: var(--gray-light);
+      border: 1px solid rgba(255,255,255,0.08); padding: 9px 22px;
+      border-radius: 50px; font-size: 0.87rem; font-weight: 600;
+      cursor: pointer; transition: all 0.3s;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--yellow); color: var(--black);
+      border-color: var(--yellow);
+    }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin-top: 40px;
+    }
+    .portfolio-item {
+      position: relative; border-radius: 14px; overflow: hidden;
+      aspect-ratio: 16/9; cursor: pointer;
+    }
+    @media (max-width: 900px) { .portfolio-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px)  { .portfolio-grid { grid-template-columns: 1fr; } }
+    .portfolio-item img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 0.6s ease; }
+    .portfolio-item:hover img { transform: scale(1.06); }
+    .portfolio-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 55%);
+      display: flex; flex-direction: column;
+      align-items: flex-start; justify-content: flex-end;
+      padding: 20px; opacity: 0; transition: opacity 0.4s;
+    }
+    .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+    .portfolio-overlay h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 5px; }
+    .portfolio-overlay span { color: var(--yellow); font-size: 0.8rem; font-weight: 600; }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials { background: var(--dark); }
+    .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 56px; }
+    .testi-card {
+      background: var(--dark2); border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 36px; position: relative;
+      transition: all 0.4s;
+    }
+    .testi-card:hover { border-color: rgba(245,197,24,0.2); transform: translateY(-6px); }
+    .testi-stars { color: var(--yellow); font-size: 1.1rem; margin-bottom: 20px; letter-spacing: 3px; }
+    .testi-text { color: var(--gray-light); font-size: 0.97rem; line-height: 1.8; margin-bottom: 28px; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 14px; }
+    .testi-avatar {
+      width: 46px; height: 46px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--yellow), var(--yellow-dark));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1rem; color: var(--black);
+    }
+    .testi-name { font-weight: 700; font-size: 0.95rem; }
+    .testi-role { color: var(--gray); font-size: 0.82rem; }
+    .quote-mark {
+      position: absolute; top: 20px; right: 24px;
+      font-size: 5rem; color: rgba(245,197,24,0.08);
+      font-family: serif; line-height: 1;
+    }
+
+    /* ── CONTACT / FOOTER ── */
+    #contact { background: var(--black); }
+    .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .contact-info h2 { margin-bottom: 16px; }
+    .contact-info p { color: var(--gray-light); line-height: 1.8; margin-bottom: 36px; }
+    .contact-detail {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 20px;
+    }
+    .contact-detail-icon {
+      width: 48px; height: 48px; border-radius: 10px;
+      background: rgba(245,197,24,0.08); border: 1px solid rgba(245,197,24,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
+    }
+    .contact-detail-text { font-weight: 600; font-size: 1rem; }
+    .contact-detail-text a { color: var(--white); text-decoration: none; transition: color 0.3s; }
+    .contact-detail-text a:hover { color: var(--yellow); }
+    .social-links { display: flex; gap: 14px; margin-top: 32px; }
+    .social-btn {
+      width: 48px; height: 48px; border-radius: 10px;
+      background: var(--dark2); border: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; font-size: 1.2rem;
+      transition: all 0.3s;
+    }
+    .social-btn:hover { background: var(--yellow); border-color: var(--yellow); transform: translateY(-3px); }
+    .contact-form { display: flex; flex-direction: column; gap: 18px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    .form-group label { font-size: 0.85rem; font-weight: 600; color: var(--gray-light); letter-spacing: 0.5px; }
+    .form-group input, .form-group textarea, .form-group select {
+      background: var(--dark2); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px; padding: 14px 18px;
+      color: var(--white); font-family: 'Inter', sans-serif;
+      font-size: 0.94rem; outline: none;
+      transition: border-color 0.3s;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      border-color: var(--yellow);
+      box-shadow: 0 0 0 3px rgba(245,197,24,0.08);
+    }
+    .form-group textarea { min-height: 130px; resize: vertical; }
+    .form-group select option { background: var(--dark2); }
+    .btn-form {
+      background: var(--yellow); color: var(--black);
+      padding: 16px; border-radius: 8px;
+      font-weight: 800; font-size: 1rem;
+      border: none; cursor: pointer;
+      transition: all 0.3s; font-family: 'Inter', sans-serif;
+    }
+    .btn-form:hover { background: var(--yellow-light); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(245,197,24,0.25); }
+
+    /* ── FOOTER BAR ── */
+    .footer-bar {
+      background: var(--dark); border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 28px 0;
+    }
+    .footer-inner {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-logo { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; }
+    .footer-logo span { color: var(--yellow); }
+    .footer-copy { color: var(--gray); font-size: 0.85rem; }
+    .footer-copy a { color: var(--yellow); text-decoration: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .tech-layout { grid-template-columns: 1fr; gap: 48px; }
+      .contact-layout { grid-template-columns: 1fr; gap: 48px; }
+      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+      .portfolio-item.large { grid-column: span 1; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .stats-inner { flex-direction: column; gap: 24px; }
+      .stat-divider { display: none; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .section { padding: 72px 0; }
+    }
+    @media (max-width: 480px) {
+      .hero-title { font-size: 2.4rem; }
+      .hero-buttons { flex-direction: column; }
+      .btn-primary, .btn-secondary { justify-content: center; }
+    }
+    /* ── HERO TWO-COL ── */
+    .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; width: 100%; }
+    @media (max-width: 960px) { .hero-inner { grid-template-columns: 1fr; } .hero-anim { display: none; } }
+
+    /* ── STUDIO ANIMATION ── */
+    .hero-anim { position: relative; height: 500px; display: flex; align-items: center; justify-content: center; }
+    .monitor-wrap { position: relative; display: flex; flex-direction: column; align-items: center; }
+    .monitor-body {
+      width: 320px; height: 220px;
+      background: #111; border-radius: 14px;
+      border: 2px solid rgba(245,197,24,0.35);
+      box-shadow: 0 0 60px rgba(245,197,24,0.1), 0 0 120px rgba(245,197,24,0.04);
+      overflow: hidden; position: relative;
+    }
+    .screen-bg { position: absolute; inset: 0; background: #080808; }
+    .screen-grid {
+      position: absolute; inset: 0; opacity: 0.12;
+      background-image: linear-gradient(rgba(245,197,24,0.6) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(245,197,24,0.6) 1px, transparent 1px);
+      background-size: 22px 22px;
+    }
+    /* room outline draws itself */
+    .room-outline {
+      position: absolute; top: 16px; left: 16px; right: 16px; bottom: 16px;
+      border: 2px solid rgba(245,197,24,0.7); border-radius: 4px;
+      animation: drawBox 2.5s ease-out infinite;
+      background: rgba(245,197,24,0.02);
+    }
+    @keyframes drawBox {
+      0%   { clip-path: inset(0 100% 100% 0); }
+      30%  { clip-path: inset(0 0% 100% 0); }
+      60%  { clip-path: inset(0 0% 0% 0); }
+      100% { clip-path: inset(0 0% 0% 0); }
+    }
+    /* furniture inside screen */
+    .furn-sofa {
+      position: absolute; bottom: 26px; left: 22px;
+      width: 90px; height: 26px;
+      background: rgba(245,197,24,0.12); border: 1px solid rgba(245,197,24,0.45);
+      border-radius: 6px 6px 3px 3px;
+      animation: popIn 0.5s ease 2.2s both;
+    }
+    .furn-table {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 52px; height: 52px;
+      background: rgba(245,197,24,0.07); border: 1px solid rgba(245,197,24,0.3);
+      border-radius: 50%;
+      animation: popIn 0.5s ease 2.5s both;
+    }
+    .furn-lamp {
+      position: absolute; top: 24px; right: 28px;
+      width: 20px; height: 34px;
+      background: rgba(245,197,24,0.1); border: 1px solid rgba(245,197,24,0.35);
+      border-radius: 10px 10px 3px 3px;
+      animation: popIn 0.5s ease 2.8s both;
+    }
+    .furn-rug {
+      position: absolute; bottom: 34px; left: 50%; transform: translateX(-50%);
+      width: 70px; height: 40px;
+      border: 1px dashed rgba(245,197,24,0.25); border-radius: 4px;
+      animation: popIn 0.5s ease 3s both;
+    }
+    @keyframes popIn { from{opacity:0;transform:scale(0.6)} to{opacity:1;transform:scale(1)} }
+    /* animated cursor */
+    .design-cursor {
+      position: absolute; width: 12px; height: 12px;
+      background: var(--yellow); border-radius: 50%;
+      box-shadow: 0 0 12px var(--yellow), 0 0 24px rgba(245,197,24,0.4);
+      z-index: 10; pointer-events: none;
+      animation: cursorPath 5s ease-in-out infinite;
+    }
+    @keyframes cursorPath {
+      0%   { top: 16px; left: 16px; }
+      20%  { top: 16px; left: 288px; }
+      40%  { top: 188px; left: 288px; }
+      60%  { top: 188px; left: 16px; }
+      75%  { top: 16px; left: 16px; }
+      82%  { top: 95px; left: 145px; }
+      90%  { top: 145px; left: 80px; }
+      100% { top: 16px; left: 16px; }
+    }
+    /* screen label */
+    .screen-label {
+      position: absolute; top: 6px; left: 50%; transform: translateX(-50%);
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 2px;
+      color: rgba(245,197,24,0.5); text-transform: uppercase; white-space: nowrap;
+    }
+    /* monitor stand */
+    .monitor-neck { width: 24px; height: 22px; background: #1a1a1a; border: 1px solid rgba(245,197,24,0.15); border-top: none; }
+    .monitor-foot { width: 110px; height: 10px; background: #1a1a1a; border-radius: 6px; border: 1px solid rgba(245,197,24,0.15); }
+    /* desk */
+    .desk {
+      width: 380px; height: 54px;
+      background: linear-gradient(to bottom, #1c1810, #0d0d0d);
+      border-top: 2px solid rgba(245,197,24,0.25);
+      border-radius: 10px 10px 0 0;
+      position: relative; margin-top: -2px;
+    }
+    .desk-pencil {
+      position: absolute; bottom: 10px; left: 28px;
+      width: 7px; height: 54px;
+      background: linear-gradient(to bottom, var(--yellow) 80%, #333 100%);
+      border-radius: 3px 3px 1px 1px; transform: rotate(-12deg);
+      transform-origin: bottom center;
+      animation: pencilWobble 3s ease-in-out infinite;
+    }
+    @keyframes pencilWobble { 0%,100%{transform:rotate(-12deg)} 50%{transform:rotate(-8deg)} }
+    .desk-ruler {
+      position: absolute; bottom: 14px; left: 52px;
+      width: 80px; height: 9px;
+      background: rgba(245,197,24,0.25); border: 1px solid rgba(245,197,24,0.4);
+      border-radius: 2px;
+    }
+    .desk-ruler::after {
+      content: ''; position: absolute; inset: 2px;
+      background: repeating-linear-gradient(90deg, rgba(245,197,24,0.5) 0, rgba(245,197,24,0.5) 1px, transparent 1px, transparent 8px);
+    }
+    .desk-coffee {
+      position: absolute; bottom: 8px; right: 32px;
+      width: 22px; height: 28px;
+      background: #111; border: 1px solid rgba(245,197,24,0.3);
+      border-radius: 3px 3px 6px 6px;
+    }
+    .desk-coffee::before {
+      content: ''; position: absolute; top: -8px; left: 50%; transform: translateX(-50%);
+      width: 2px; height: 8px;
+      background: rgba(245,197,24,0.3);
+      border-radius: 2px;
+      animation: steam 2s ease-in-out infinite;
+    }
+    @keyframes steam { 0%,100%{opacity:0.3;transform:translateX(-50%) translateY(0)} 50%{opacity:0.8;transform:translateX(-50%) translateY(-6px)} }
+    .desk-mousepad {
+      position: absolute; bottom: 6px; right: 62px;
+      width: 46px; height: 36px;
+      background: rgba(245,197,24,0.05); border: 1px solid rgba(245,197,24,0.12);
+      border-radius: 4px;
+    }
+    /* floating cards */
+    .float-card {
+      position: absolute; background: rgba(18,18,18,0.96);
+      border: 1px solid rgba(245,197,24,0.2); border-radius: 12px;
+      padding: 14px 16px; backdrop-filter: blur(12px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+    }
+    .f-label { font-size: 0.68rem; font-weight: 700; color: var(--yellow); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px; }
+    /* card 1: palette */
+    .card-palette { top: 16px; right: -16px; animation: floatA 4s ease-in-out infinite; }
+    .swatches { display: flex; gap: 6px; }
+    .swatch { width: 24px; height: 24px; border-radius: 6px; }
+    @keyframes floatA { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+    /* card 2: approved */
+    .card-approved { bottom: 90px; left: -20px; animation: floatB 4.5s ease-in-out 0.8s infinite; min-width: 130px; }
+    .approved-row { display: flex; align-items: center; gap: 8px; }
+    .approved-dot { width: 10px; height: 10px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 8px #22c55e; }
+    .approved-text { font-size: 0.78rem; font-weight: 700; color: #22c55e; }
+    @keyframes floatB { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
+    /* card 3: progress */
+    .card-progress { top: 130px; right: -20px; animation: floatC 5s ease-in-out 0.4s infinite; min-width: 140px; }
+    .prog-label { font-size: 0.72rem; color: var(--gray-light); margin-bottom: 6px; }
+    .prog-track { height: 5px; background: rgba(255,255,255,0.08); border-radius: 3px; }
+    .prog-fill { height: 100%; background: linear-gradient(90deg, var(--yellow), var(--yellow-light)); border-radius: 3px; animation: progAnim 3s ease-in-out infinite alternate; }
+    @keyframes progAnim { from{width:35%} to{width:88%} }
+    @keyframes floatC { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+    /* glow ring behind monitor */
+    .anim-glow {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -60%);
+      width: 360px; height: 280px;
+      background: radial-gradient(ellipse, rgba(245,197,24,0.07) 0%, transparent 70%);
+      pointer-events: none; animation: glowPulse 3s ease-in-out infinite;
+    }
+    @keyframes glowPulse { 0%,100%{opacity:0.6} 50%{opacity:1} }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="navbar">
+  <div class="container nav-inner">
+    <a href="#home" class="nav-logo">M<span>-Design</span></a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#tech">Tech</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Start Project →</a>
+    <div class="hamburger" id="menuBtn" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <span class="close-menu" id="closeMenu">✕</span>
+  <a href="#home" onclick="closeMobile()">Home</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#tech" onclick="closeMobile()">Tech</a>
+  <a href="#portfolio" onclick="closeMobile()">Portfolio</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- ── HERO ── -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge fade-in">
+          <span class="dot"></span>
+          Premium Interior Design · Albania/Kosovo &amp; WorldWide
+        </div>
+        <h1 class="hero-title fade-in">
+          Where Spaces<br />Become <span class="highlight">Masterpieces</span>
+        </h1>
+        <p class="hero-sub fade-in">
+          Expert interior design for <strong>Airbnb owners</strong>, <strong>homeowners</strong>,
+          <strong>furniture stores</strong>, and <strong>commercial clients</strong> &mdash;
+          serving Albania, Kosovo, and clients <strong>worldwide</strong>.
+        </p>
+        <div class="hero-buttons fade-in">
+          <a href="#contact" class="btn-primary">Start Your Project &rarr;</a>
+          <a href="#portfolio" class="btn-secondary">View Portfolio</a>
+        </div>
+      </div>
+      <!-- ── STUDIO ANIMATION ── -->
+      <div class="hero-anim">
+        <div class="anim-glow"></div>
+        <!-- Monitor -->
+        <div style="display:flex;flex-direction:column;align-items:center;position:relative;">
+          <!-- Floating card: color palette -->
+          <div class="float-card card-palette">
+            <div class="f-label">Palette</div>
+            <div class="swatches">
+              <div class="swatch" style="background:#f5c518;"></div>
+              <div class="swatch" style="background:#1a1a1a;"></div>
+              <div class="swatch" style="background:#c8a96e;"></div>
+              <div class="swatch" style="background:#2d2d2d;"></div>
+            </div>
+          </div>
+          <!-- Floating card: design progress -->
+          <div class="float-card card-progress">
+            <div class="f-label">Design Progress</div>
+            <div class="prog-label">Room Concept</div>
+            <div class="prog-track"><div class="prog-fill"></div></div>
+          </div>
+          <!-- Monitor body -->
+          <div class="monitor-body">
+            <div class="screen-bg"></div>
+            <div class="screen-grid"></div>
+            <div class="screen-label">M-Design Studio</div>
+            <div class="room-outline"></div>
+            <div class="furn-sofa"></div>
+            <div class="furn-table"></div>
+            <div class="furn-lamp"></div>
+            <div class="furn-rug"></div>
+            <div class="design-cursor"></div>
+          </div>
+          <div class="monitor-neck"></div>
+          <div class="monitor-foot"></div>
+          <!-- Desk -->
+          <div class="desk">
+            <div class="desk-pencil"></div>
+            <div class="desk-ruler"></div>
+            <div class="desk-mousepad"></div>
+            <div class="desk-coffee"></div>
+          </div>
+          <!-- Floating card: approved -->
+          <div class="float-card card-approved">
+            <div class="f-label">Client Review</div>
+            <div class="approved-row">
+              <div class="approved-dot"></div>
+              <div class="approved-text">Design Approved</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-bottom">
+    <span>Scroll</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ── STATS ── -->
+<section id="stats">
+  <div class="container">
+    <div class="stats-inner">
+      <div class="stat-item fade-in">
+        <div class="stat-number" data-count="4">0</div>
+        <div class="stat-label">Years of Excellence</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item fade-in">
+        <div class="stat-number" data-count="250">0</div>
+        <div class="stat-label">Projects Completed</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item fade-in">
+        <div class="stat-number" data-count="100">0</div>
+        <div class="stat-label">Satisfied Clients</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item fade-in">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Design Satisfaction</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section id="services" class="section">
+  <div class="container">
+    <div class="services-header fade-in">
+      <p class="section-label">What We Do</p>
+      <h2 class="section-title">Tailored Design for <span>Every Space</span></h2>
+      <p class="section-desc">From short-term rentals to high-end commercial environments, we craft interiors that captivate, convert, and inspire.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-in">
+        <div class="service-icon">🏠</div>
+        <h3>Airbnb Interiors</h3>
+        <p>Transform your listing into a five-star experience. Our Airbnb-focused designs maximize occupancy rates and boost your average daily rate through strategic, photogenic spaces.</p>
+        <span class="service-tag">Airbnb Hosts</span>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">🏡</div>
+        <h3>Residential Design</h3>
+        <p>Your home should reflect who you are. We create bespoke living environments that balance aesthetics with comfort, crafting spaces your family will love forever.</p>
+        <span class="service-tag">Homeowners</span>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">🏢</div>
+        <h3>Commercial Spaces</h3>
+        <p>First impressions define your brand. We design offices, restaurants, showrooms, and retail spaces that communicate prestige and drive business performance.</p>
+        <span class="service-tag">Commercial Clients</span>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon">🛋️</div>
+        <h3>Furniture Store Client Design</h3>
+        <p>We partner with furniture stores to design spaces for their clients — helping you close more deals by showing buyers exactly how the furniture looks in a real, styled home.</p>
+        <span class="service-tag">Furniture Stores</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TECH / AI ── -->
+<section id="tech" class="section">
+  <div class="tech-glow"></div>
+  <div class="container">
+    <div class="tech-layout">
+      <div class="fade-in">
+        <p class="section-label">The M-Design Advantage</p>
+        <h2 class="section-title">Great Design, <span>Enhanced</span><br />by AI & 3D Technology</h2>
+        <p class="section-desc" style="margin-bottom: 40px;">Our core is interior design expertise — shaped by years of crafting real spaces. We use AI and 3D technology as powerful tools to bring our designs to life faster, more accurately, and more vividly than ever before.</p>
+        <div class="tech-features">
+          <div class="tech-feature">
+            <div class="tech-feature-icon">🤖</div>
+            <div>
+              <h4>AI Enhanced System Rendering</h4>
+              <p>We use cutting-edge AI rendering pipelines to produce photorealistic visualizations in a fraction of the time — giving you more iterations, faster decisions, and a clearer vision.</p>
+            </div>
+          </div>
+          <div class="tech-feature">
+            <div class="tech-feature-icon">🎮</div>
+            <div>
+              <h4>Immersive 3D Walkthroughs</h4>
+              <p>Walk through your future space before a single piece of furniture is moved. Our 3D animations let you experience every angle, lighting condition, and design choice in full dimension.</p>
+            </div>
+          </div>
+          <div class="tech-feature">
+            <div class="tech-feature-icon">⚡</div>
+            <div>
+              <h4>Lightning-Fast Iterations</h4>
+              <p>Need a color change? Different layout? AI-powered design means revisions that used to take days now happen in hours — without sacrificing quality or creativity.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tech-visual fade-in">
+        <div class="ai-tag">Design-First. Tech-Enhanced.</div>
+        <div class="ai-quote">
+          "M-Design does not <span>fear AI</span>;<br />we <span>harness it.</span>"
+        </div>
+        <p style="color: var(--gray-light); font-size: 0.92rem; line-height: 1.7; margin-bottom: 28px; position: relative;">
+          AI doesn't design — our designers do. We use AI rendering and 3D animation as precision tools to enhance our creative process, letting you see and approve every detail before any work begins.
+        </p>
+        <div class="ai-chips">
+          <span class="ai-chip">AI Rendering</span>
+          <span class="ai-chip">3D Animation</span>
+          <span class="ai-chip">Photorealistic Output</span>
+          <span class="ai-chip">Rapid Prototyping</span>
+          <span class="ai-chip">Smart Space Planning</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PORTFOLIO ── -->
+<section id="portfolio" class="section">
+  <div class="container">
+    <div class="portfolio-header fade-in">
+      <p class="section-label">Our Work</p>
+      <h2 class="section-title">Spaces That <span>Speak</span></h2>
+      <p class="section-desc">Every project is a story. Browse our portfolio of transformational interior designs across residential, Airbnb, and commercial spaces.</p>
+      <div class="portfolio-filter">
+        <button class="filter-btn active" onclick="filterPortfolio(this, 'all')">All</button>
+        <button class="filter-btn" onclick="filterPortfolio(this, 'airbnb')">Airbnb</button>
+        <button class="filter-btn" onclick="filterPortfolio(this, 'residential')">Residential</button>
+        <button class="filter-btn" onclick="filterPortfolio(this, 'commercial')">Commercial</button>
+        <button class="filter-btn" onclick="filterPortfolio(this, 'furniture')">Furniture Store</button>
+      </div>
+    </div>
+    <div class="portfolio-grid" id="portfolioGrid">
+      <div class="portfolio-item fade-in" data-cat="commercial">
+        <img src="images/portfolio7.jpg" alt="Open-plan commercial space – M-Design" loading="lazy" />
+        <div class="portfolio-overlay"><h4>Modern Open-Plan Office</h4><span>Commercial</span></div>
+      </div>
+      <div class="portfolio-item fade-in" data-cat="furniture">
+        <img src="images/portfolio8.jpg" alt="Kitchen & dining concept – M-Design" loading="lazy" />
+        <div class="portfolio-overlay"><h4>Kitchen &amp; Dining Concept</h4><span>Furniture Store Partnership</span></div>
+      </div>
+      <div class="portfolio-item fade-in" data-cat="airbnb">
+        <img src="images/portfolio6.jpg" alt="Marble luxury bedroom – M-Design" loading="lazy" />
+        <div class="portfolio-overlay"><h4>Marble Luxury Bedroom</h4><span>Airbnb</span></div>
+      </div>
+      <div class="portfolio-item fade-in" data-cat="residential">
+        <img src="images/portfolio4.jpg" alt="Luxury master bedroom – M-Design" loading="lazy" />
+        <div class="portfolio-overlay"><h4>Some of our best recent projects</h4><span>Residential</span></div>
+      </div>
+      <div class="portfolio-item fade-in" data-cat="residential">
+        <img src="images/portfolio1.jpg" alt="Classic white kitchen – M-Design" loading="lazy" />
+        <div class="portfolio-overlay"><h4>Classic White Kitchen</h4><span>Residential</span></div>
+      </div>
+      <div class="portfolio-item fade-in" data-cat="airbnb">
+        <img src="images/portfolio9.jpg" alt="Warm Airbnb suite – M-Design" loading="lazy" />
+        <div class="portfolio-overlay"><h4>Warm Airbnb Suite</h4><span>Airbnb</span></div>
+      </div>
+      <div class="portfolio-item fade-in" data-cat="residential">
+        <img src="images/portfolio11.jpg" alt="Living room with wood TV unit – M-Design" loading="lazy" />
+        <div class="portfolio-overlay"><h4>Wood & Marble Living Room</h4><span>Residential</span></div>
+      </div>
+      <div class="portfolio-item fade-in" data-cat="airbnb">
+        <img src="images/portfolio12.jpg" alt="Modern bathroom design – M-Design" loading="lazy" />
+        <div class="portfolio-overlay"><h4>Contemporary Bathroom</h4><span>Airbnb</span></div>
+      </div>
+      <div class="portfolio-item fade-in" data-cat="furniture">
+        <img src="images/portfolio10.jpg" alt="Black & white kitchen – M-Design" loading="lazy" />
+        <div class="portfolio-overlay"><h4>Black &amp; White Kitchen</h4><span>Furniture Store Partnership</span></div>
+      </div>
+      <div class="portfolio-item fade-in" data-cat="residential">
+        <img src="images/portfolio2.jpg" alt="3D kitchen render – M-Design" loading="lazy" />
+        <div class="portfolio-overlay"><h4>Kitchen 3D Render</h4><span>Design Visualization</span></div>
+      </div>
+      <div class="portfolio-item fade-in" data-cat="residential">
+        <img src="images/portfolio3.jpg" alt="Contemporary living room – M-Design" loading="lazy" />
+        <div class="portfolio-overlay"><h4>Contemporary Living Room</h4><span>Residential</span></div>
+      </div>
+      <div class="portfolio-item fade-in" data-cat="residential">
+        <img src="images/portfolio5.jpg" alt="Open-plan living space – M-Design" loading="lazy" />
+        <div class="portfolio-overlay"><h4>Open-Plan Living Space</h4><span>Residential</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section id="testimonials" class="section">
+  <div class="container">
+    <div class="fade-in" style="text-align:center; margin-bottom: 16px;">
+      <p class="section-label" style="text-align:center;">Client Stories</p>
+      <h2 class="section-title" style="text-align:center;">What Our Clients <span>Say</span></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card fade-in">
+        <div class="quote-mark">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"M-Design completely transformed my Airbnb. After the redesign, my bookings went up 60% and I started getting 5-star reviews specifically mentioning the interior. The 3D walkthrough they showed me before starting was mind-blowing — I knew exactly what I was getting."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">A</div>
+          <div>
+            <div class="testi-name">Arben K.</div>
+            <div class="testi-role">Airbnb Host, Tirana</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card fade-in">
+        <div class="quote-mark">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I came in wanting something modern for my living room, and M-Design delivered something that felt like a magazine shoot. The attention to detail, the quality recommendations, and especially the 3D animation that let me visualize everything — absolutely world-class service."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">L</div>
+          <div>
+            <div class="testi-name">Ledion P.</div>
+            <div class="testi-role">Homeowner, Durrës</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fade-in">
+        <div class="quote-mark">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I couldn't differentiate between the design and real life kitchen, woow! M-Design presented our clients with renders so realistic, they were ready to sign on the spot. This collaboration has genuinely helped us close more deals than ever before."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">A</div>
+          <div>
+            <div class="testi-name">Adriatiki Home Group</div>
+            <div class="testi-role">Furniture Store Partner</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="contact-layout">
+      <div class="fade-in">
+        <p class="section-label">Get In Touch</p>
+        <h2 class="section-title">Let's Build Something <span>Extraordinary</span></h2>
+        <p class="contact-info" style="margin-bottom: 40px;">Ready to transform your space? Reach out and let's discuss your vision — every great interior starts with a conversation.</p>
+        <div class="contact-detail" style="margin-bottom: 28px;">
+          <div class="contact-detail-icon">📞</div>
+          <div class="contact-detail-text">
+            <a href="tel:045993743">045 993 743</a>
+          </div>
+        </div>
+        <div class="contact-detail" style="margin-bottom: 28px;">
+          <div class="contact-detail-icon">📍</div>
+          <div class="contact-detail-text">Albania/Kosovo & WorldWide</div>
+        </div>
+        <div class="social-links">
+          <a href="https://www.tiktok.com/@m_des1gn" target="_blank" rel="noopener" class="social-btn" title="TikTok">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.28 6.28 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.87a8.18 8.18 0 0 0 4.78 1.52V7a4.85 4.85 0 0 1-1.02-.31z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61555338125944" target="_blank" rel="noopener" class="social-btn" title="Facebook">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.88v2.27h3.32l-.53 3.49h-2.79V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="fade-in">
+        <form class="contact-form" id="contactForm" action="https://formsubmit.co/malmaxhuni212@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New lead from M-Design Website">
+          <input type="hidden" name="_next" value="https://malmaxhuni212.github.io">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" name="firstName" placeholder="Arben" required />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input type="text" id="lastName" name="lastName" placeholder="Koci" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+355 6X XXX XXXX" />
+          </div>
+          <div class="form-group">
+            <label for="projectType">Project Type</label>
+            <select id="projectType" name="projectType">
+              <option value="">Select your project type</option>
+              <option>Airbnb Interior Design</option>
+              <option>Residential Design</option>
+              <option>Commercial Space</option>
+              <option>Furniture Store Client Design</option>
+              <option>3D Visualization / AI Rendering</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Your Vision</label>
+            <textarea id="message" name="message" placeholder="Tell us about your space, your style, and what you'd like to achieve..."></textarea>
+          </div>
+          <button type="submit" id="submitBtn" class="btn-form">Send Message →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer-bar">
+  <div class="container footer-inner">
+    <div class="footer-logo">M<span>-Design</span></div>
+    <p class="footer-copy">© 2026 M-Design. All rights reserved. | Designed by M-Design Software Engineer | <a href="tel:045993743">045 993 743</a></p>
+  </div>
+</footer>
+
+<script>
+  // ── NAV SCROLL ──
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // ── MOBILE MENU ──
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.add('open');
+  });
+  document.getElementById('closeMenu').addEventListener('click', closeMobile);
+  function closeMobile() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+
+  // ── FADE-IN on SCROLL ──
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  fadeEls.forEach(el => observer.observe(el));
+
+  // ── COUNT UP ANIMATION ──
+  const counters = document.querySelectorAll('[data-count]');
+  const countObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.dataset.count);
+        const suffix = target === 4 ? '+' : '+';
+        let current = 0;
+        const step = Math.ceil(target / 60);
+        const timer = setInterval(() => {
+          current = Math.min(current + step, target);
+          el.textContent = current + suffix;
+          if (current >= target) clearInterval(timer);
+        }, 25);
+        countObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => countObserver.observe(c));
+
+  // ── PORTFOLIO FILTER ──
+  function filterPortfolio(btn, cat) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.portfolio-item').forEach(item => {
+      const match = cat === 'all' || item.dataset.cat === cat;
+      item.style.display = match ? 'block' : 'none';
+    });
+  }
+
+  // ── CONTACT FORM ──
+  /* Form handles submission natively via formsubmit.co */
+</script>
+</body>
+</html>
